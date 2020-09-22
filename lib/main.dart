@@ -1,6 +1,8 @@
 import 'package:carousel_pro/carousel_pro.dart';
 import 'package:flutter/material.dart';
 
+import 'components/horizontal_listview.dart';
+
 void main() {
   runApp(new MaterialApp(
     home: HomePage(),
@@ -103,26 +105,35 @@ class _HomePageState extends State<HomePage> {
       ),
       body: ListView(
         children: [
-          Container(
-            height: 200.0,
-            child: Carousel(
-              boxFit: BoxFit.cover,
-              images: [
-                AssetImage('assets/images/c1.jpg'),
-                AssetImage('assets/images/m1.jpeg'),
-                AssetImage('assets/images/w3.jpeg'),
-                AssetImage('assets/images/w4.jpeg'),
-                AssetImage('assets/images/m2.jpg'),
-              ],
-              autoplay: false,
-              animationCurve: Curves.fastOutSlowIn,
-              animationDuration: Duration(milliseconds: 1500),
-              dotSize: 4.0,
-              dotColor: Colors.red,
-              indicatorBgPadding: 4.0,
-            ),
-          )
+          buildCarousel(),
+          Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Text('Categories'),
+          ),
+          HorizontalListView()
         ],
+      ),
+    );
+  }
+
+  Container buildCarousel() {
+    return Container(
+      height: 200.0,
+      child: Carousel(
+        boxFit: BoxFit.cover,
+        images: [
+          AssetImage('assets/images/c1.jpg'),
+          AssetImage('assets/images/m1.jpeg'),
+          AssetImage('assets/images/w3.jpeg'),
+          AssetImage('assets/images/w4.jpeg'),
+          AssetImage('assets/images/m2.jpg'),
+        ],
+        autoplay: false,
+        animationCurve: Curves.fastOutSlowIn,
+        animationDuration: Duration(milliseconds: 1500),
+        dotSize: 4.0,
+        dotColor: Colors.red,
+        indicatorBgPadding: 4.0,
       ),
     );
   }
