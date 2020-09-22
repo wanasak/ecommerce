@@ -1,3 +1,4 @@
+import 'package:carousel_pro/carousel_pro.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -17,6 +18,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        elevation: 0.0,
         title: Text('Fashapp'),
         actions: [
           IconButton(
@@ -98,6 +100,29 @@ class _HomePageState extends State<HomePage> {
             ),
           ],
         ),
+      ),
+      body: ListView(
+        children: [
+          Container(
+            height: 200.0,
+            child: Carousel(
+              boxFit: BoxFit.cover,
+              images: [
+                AssetImage('assets/images/c1.jpg'),
+                AssetImage('assets/images/m1.jpeg'),
+                AssetImage('assets/images/w3.jpeg'),
+                AssetImage('assets/images/w4.jpeg'),
+                AssetImage('assets/images/m2.jpg'),
+              ],
+              autoplay: false,
+              animationCurve: Curves.fastOutSlowIn,
+              animationDuration: Duration(milliseconds: 1500),
+              dotSize: 4.0,
+              dotColor: Colors.red,
+              indicatorBgPadding: 4.0,
+            ),
+          )
+        ],
       ),
     );
   }
