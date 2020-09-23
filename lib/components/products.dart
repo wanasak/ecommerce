@@ -1,3 +1,4 @@
+import 'package:ecommerce/pages/product_detail.dart';
 import 'package:flutter/material.dart';
 
 class Products extends StatefulWidget {
@@ -58,7 +59,15 @@ class Product extends StatelessWidget {
           tag: product_name,
           child: Material(
             child: InkWell(
-              onTap: () {},
+              onTap: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => ProductDetails(
+                          name: product_name,
+                          picture: product_picture,
+                          new_price: product_price,
+                          old_price: product_old_price,
+                        )));
+              },
               child: GridTile(
                 footer: Container(
                   color: Colors.white70,
@@ -66,11 +75,13 @@ class Product extends StatelessWidget {
                     leading: Text(product_name),
                     title: Text(
                       "\$$product_price",
+                      textAlign: TextAlign.end,
                       style: TextStyle(
                           color: Colors.green, fontWeight: FontWeight.w800),
                     ),
                     subtitle: Text(
                       "\$$product_old_price",
+                      textAlign: TextAlign.end,
                       style: TextStyle(
                           color: Colors.red,
                           fontWeight: FontWeight.w800,
